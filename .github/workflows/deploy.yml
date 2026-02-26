@@ -104,7 +104,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
-        publish_branch: gh-pages
-        force: true # 新增：允许强制推送（解决分支保护导致的推送拒绝）
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force: true # 新增：允许强制推送（解决分支保护导致的推送拒绝）
