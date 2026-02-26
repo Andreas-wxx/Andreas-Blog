@@ -3,6 +3,8 @@ title: About
 description: Everything you need to know about this site and its author.
 date: 2026-01-26
 lastmod: 2026-01-26
+type: "about"
+weight: -999   # 置顶关键
 menu:
     main: 
         weight: -90

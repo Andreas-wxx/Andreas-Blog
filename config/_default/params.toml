@@ -1,9 +1,8 @@
 # Pages placed under these sections will be shown on homepage and archive page.
-mainSections = ["post"]
+mainSections = ["about","关于","post"]
 # Output page's full content in RSS.
 rssFullContent = true
 favicon        = "img/favicon.jpg"
-
 # Accepted values: "default", "lastmod"
 # default = see https://gohugo.io/quick-reference/glossary/#default-sort-order
 # lastmod = sort by last modified date, in descending order
