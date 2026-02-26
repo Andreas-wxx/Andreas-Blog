@@ -42,6 +42,8 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: "true"
       - name: Create directory for user-specific executable files
         run: |
           mkdir -p "${HOME}/.local"
@@ -103,8 +105,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages
-          force: true # 新增：允许强制推送（解决分支保护导致的推送拒绝）
