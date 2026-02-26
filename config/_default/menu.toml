@@ -1,0 +1,26 @@
+# Configure main menu and social menu
+#[[main]]
+#identifier = "home"
+#name = "Home"
+#url = "/"
+#[main.params]
+#icon = "home"
+#newtab = true
+
+[[social]]
+    identifier = "github"
+    name       = "GitHub"
+    url        = "https://github.com/Andreas-wxx"
+    weight     = 1
+
+    [social.params]
+        icon = "github"
+
+[[social]]
+    identifier = "bilibili"
+    name       = "BiliBili"
+    url        = "https://space.bilibili.com/397582618"
+    weight     = 2
+
+    [social.params]
+        icon = "bilibili"
