@@ -52,7 +52,7 @@
     will-change: transform;
 
     &:hover {
-        transform: scale(1.05, 1.05);
+        transform: scale(1.03, 1.03);
         z-index: 4;
     }
 }
@@ -63,7 +63,7 @@
 }
 
 .article-list--tile article:hover {
-    transform: scale(1.05, 1.05);
+    transform: scale(1.02, 1.02);
     will-change: transform;
 }
 
@@ -101,7 +101,7 @@
 }
 
 .widget.archives .widget-archive--list:hover {
-    transform: scale(1.05, 1.05);
+    transform: scale(1.02, 1.02);
 }
 
 //------------------------------------------------------
@@ -113,7 +113,7 @@
 }
 
 .tagCloud .tagCloud-tags a:hover {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.05, 1.05);
 }
 
 // ----------------调整 TOC 目录间距------------------
