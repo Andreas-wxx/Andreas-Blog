@@ -36,7 +36,7 @@ menu:
 
 ---
 
-## 🛠️ 技术雷达 (Tech Stack)
+## 🛠️ 技术雷达
 
 ### 💻 软件与算法
 <p align="left">
