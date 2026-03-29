@@ -192,22 +192,76 @@
   }
 }
 
-// light模式下的代码块样式调整
-[data-scheme="light"] .article-content .highlight {
-  background-color: #fdf4eb;
-}
+// // light模式下的代码块样式调整
+// [data-scheme="light"] .article-content .highlight {
+//   background-color: #fdf4eb;
+// }
 
-[data-scheme="light"] .chroma {
-  color: #ff6f00;
-  background-color: #fcf0e4cc;
-}
+// [data-scheme="light"] .chroma {
+//   color: #ff6f00;
+//   background-color: #fcf0e4cc;
+// }
 
-// 文章内容引用块样式
+// // 文章内容引用块样式
+// .article-content {
+//   blockquote {
+//     border-left: 6px solid #00d057 !important;
+//     background: #c3f1cc;
+//   }
+// }
+
+/* =========================================
+   Vue 风格 Markdown 排版定制
+   ========================================= */
 .article-content {
-  blockquote {
-    border-left: 6px solid #00d057 !important;
-    background: #c3f1cc;
-  }
+    /* 定义 Vue 经典主题色 */
+    --vue-green: #3eaf7c;
+    --vue-green-light: #42b883;
+    --vue-text-light: #476582;
+    --vue-bg-light: rgba(66, 184, 131, 0.1);
+
+    /* 1. 标题样式：H2 带有经典的底部细线 */
+    h2 {
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid var(--card-border-color);
+        margin-top: 1.5em;
+    }
+
+    /* 2. 引用块 (Blockquote)：左侧绿边，淡绿背景 */
+    blockquote {
+        color: var(--card-text-color-main);
+        border-left: 4px solid var(--vue-green) !important;
+        background-color: var(--vue-bg-light) !important;
+        padding: 10px 15px;
+        border-radius: 0 4px 4px 0;
+        margin: 20px 0;
+    }
+
+    /* 3. 行内代码 (Inline Code)：浅色背景，特定字体颜色 */
+    p code, li code {
+        color: var(--vue-text-light);
+        background-color: rgba(27, 31, 35, 0.05);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 0.85em;
+        /* 适配暗黑模式 */
+        @media (prefers-color-scheme: dark) {
+            color: #a8b1bd;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    /* 4. 文章内部的超链接样式 */
+    a {
+        color: var(--vue-green);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--vue-green-light);
+            text-decoration: underline;
+        }
+    }
 }
 
 // ---------------------鼠标悬停，超链接的显示-------------------
