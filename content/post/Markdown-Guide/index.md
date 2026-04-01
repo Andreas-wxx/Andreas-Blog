@@ -5,7 +5,7 @@ slug: "markdown-guide"
 date: 2026-03-29T21:31:51+08:00
 image: 
 categories:
-    - 指南
+    - Guide
 tags:
     - Markdown
 weight: 1
