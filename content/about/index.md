@@ -16,7 +16,7 @@ menu:
 
 <h2 align="center">Hi there, I'm Andreas 👋</h2>
 <p align="center">
-  <b>坐标南京 | 嵌入式开发者 | 高精度定位追随者</b>
+  <b>坐标南京 | 嵌入式开发者</b>
 </p>
 
 ---
