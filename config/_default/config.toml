@@ -11,8 +11,10 @@ defaultContentLanguage = "zh"
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage = true
 
-# Change it to your Disqus shortname before using
-disqusShortname = "hugo-theme-stack"
+# Disqus 短名：这里原本是主题作者 demo 站的 "hugo-theme-stack"，本站无权使用，
+# 会让每篇文章都报 "We were unable to load Disqus."。
+# 换成你在 disqus.com 注册的短名后，把 params.toml 里 [comments] enabled 改回 true。
+# disqusShortname = "your-shortname"
 
 [pagination]
     pagerSize = 10

@@ -1,0 +1,26 @@
+{
+  // 本仓库的便携工具链都在 .tools/ 下（Hugo extended + Go），
+  // 由 .tools/env.ps1 提供同样的环境变量；这里再注入到 VSCode 集成终端。
+  "terminal.integrated.env.windows": {
+    "PATH": "D:\\_Andreas_Blog\\.tools\\hugo;D:\\_Andreas_Blog\\.tools\\go\\bin;${env:PATH}",
+    "GOROOT": "D:\\_Andreas_Blog\\.tools\\go",
+    "GOPATH": "D:\\_Andreas_Blog\\.tools\\gopath",
+    "GOMODCACHE": "D:\\_Andreas_Blog\\.tools\\gopath\\pkg\\mod",
+    "GOCACHE": "D:\\_Andreas_Blog\\.tools\\gopath\\cache",
+    "GOTOOLCHAIN": "local",
+    "GOPROXY": "https://goproxy.cn,direct",
+    "HUGO_CACHEDIR": "D:\\_Andreas_Blog\\.tools\\hugo-cache",
+    "TZ": "Asia/Shanghai"
+  },
+  // 别让 VSCode 去索引 250MB 的 Go 压缩包和模块缓存
+  "search.exclude": {
+    "**/.tools": true,
+    "**/public": true,
+    "**/resources": true
+  },
+  "files.watcherExclude": {
+    "**/.tools/**": true,
+    "**/public/**": true,
+    "**/resources/**": true
+  }
+}

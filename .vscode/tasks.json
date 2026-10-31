@@ -1,12 +1,20 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
+    // for the tasks.json format
+    //
+    // Hugo extended + Go 是便携版，装在仓库内的 .tools\ 下（见 .vscode/settings.json）。
+    // 这里用绝对路径调用，不依赖系统 PATH，也不受 PowerShell 执行策略影响。
     "version": "2.0.0",
     "tasks": [
         {
             "label": "Serve Drafts",
             "type": "shell",
-            "command": "hugo server -D",
+            "command": "D:\\_Andreas_Blog\\.tools\\hugo\\hugo.exe",
+            "args": [
+                "server",
+                "-D",
+                "--disableFastRender"
+            ],
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -17,7 +25,8 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "hugo",
+            "command": "D:\\_Andreas_Blog\\.tools\\hugo\\hugo.exe",
+            "args": [],
             "group": {
                 "kind": "build",
                 "isDefault": true

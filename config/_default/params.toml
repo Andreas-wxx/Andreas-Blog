@@ -1,5 +1,5 @@
 # Pages placed under these sections will be shown on homepage and archive page.
-mainSections = ["about","关于","post"]
+mainSections = ["post"]
 # Output page's full content in RSS.
 rssFullContent = true
 favicon        = "img/favicon.jpg"
@@ -49,7 +49,9 @@ SortBy              = "default"
 
 ## Comments
 [comments]
-    enabled  = true
+    # 之前用的是主题作者 demo 站的 Disqus 短名，全站会报 "We were unable to load Disqus."，故先关闭。
+    # 要用评论：填好 config.toml 里你自己的 disqusShortname（或换 giscus / waline），再改成 true。
+    enabled  = false
     provider = "disqus"
 
     # See all the available configurations at https://github.com/CaiJimmy/hugo-theme-stack/blob/master/config/_default/params.toml
