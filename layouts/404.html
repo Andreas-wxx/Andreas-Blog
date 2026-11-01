@@ -34,9 +34,16 @@
 
         <script>
             const wrongUrl = new URL(window.location.href);
+            const basePath = "{{ .Site.Home.RelPermalink }}";
 
             /// Get the search keyword from the wrong URL by removing all slashes and dashes
-            const searchKeyword = decodeURIComponent(wrongUrl.pathname).split(/[/|-]/).join(' ').trim();
+            // 站点部署在 /Andreas-Blog/ 这样的子路径下时，pathname 里会带上前缀，
+            // 直接按 / 和 - 切分会把 "Andreas Blog" 也当成搜索词预填进输入框。
+            let wrongPath = decodeURIComponent(wrongUrl.pathname);
+            if (basePath !== "/" && wrongPath.startsWith(basePath)) {
+                wrongPath = wrongPath.slice(basePath.length);
+            }
+            const searchKeyword = wrongPath.split(/[/|-]/).join(' ').trim();
 
             document.getElementById('searchInput').setAttribute('value', searchKeyword);
         </script>

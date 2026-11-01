@@ -47,17 +47,21 @@
     initScrollTop();
 </script>
 
-<script src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
-    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
-    crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
-    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE" crossorigin="anonymous" />
+{{- /* NProgress 改为本地资源：cdn.jsdelivr.net 在某些地区（含本机网络）不可达，
+       原来从 CDN 加载会在页面上抛出 "NProgress is not defined" 并让进度条彻底失效。
+       文件取自 fastly.jsdelivr.net，字节与原来的 integrity 哈希完全一致。 */ -}}
+{{- $npCSS := resources.Get "vendor/nprogress/nprogress.css" | fingerprint -}}
+{{- $npJS := resources.Get "vendor/nprogress/nprogress.min.js" | fingerprint -}}
+<link rel="stylesheet" href="{{ $npCSS.RelPermalink }}" />
+<script src="{{ $npJS.RelPermalink }}"></script>
 <script>
-    NProgress.start();
-    document.addEventListener("readystatechange", () => {
-        if (document.readyState === "interactive") NProgress.inc(0.8);
-        if (document.readyState === "complete") NProgress.done();
-    });
+    if (window.NProgress) {
+        NProgress.start();
+        document.addEventListener("readystatechange", () => {
+            if (document.readyState === "interactive") NProgress.inc(0.8);
+            if (document.readyState === "complete") NProgress.done();
+        });
+    }
 </script>
 
 <style>

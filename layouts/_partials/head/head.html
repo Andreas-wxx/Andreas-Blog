@@ -27,6 +27,9 @@
 {{ with $favicon }}
     <link rel="shortcut icon" href="{{ .Permalink }}" />
 {{ end }}
+{{- with resources.Get "img/apple-touch-icon.png" }}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ .RelPermalink }}" />
+{{- end }}
 
 {{- if .Site.Params.cookies.enabled -}}
     {{- partial "cookies/analytics.html" . -}}
