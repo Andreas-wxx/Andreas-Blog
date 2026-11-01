@@ -21,9 +21,10 @@ jobs:
     env:
       DART_SASS_VERSION: 1.97.1
       GO_VERSION: 1.25.5
-      HUGO_VERSION: 0.154.2
+      # 与本地验证过的版本一致；要升级就改这一行，不要再让 CI 用 latest
+      HUGO_VERSION: 0.168.0
       NODE_VERSION: 24.12.0
-      TZ: Europe/Oslo
+      TZ: Asia/Shanghai
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -56,7 +57,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
       - name: Verify installations
         run: |

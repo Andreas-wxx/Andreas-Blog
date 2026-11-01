@@ -27,14 +27,14 @@
         btn.onclick = backToTop
         rightSideBar.appendChild(btn)
         // 滚动监听
-        window.onscroll = function () {
+        window.addEventListener("scroll", function () {
             // 当网页向下滑动 20px 出现"返回顶部" 按钮
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 btn.style.display = "block";
             } else {
                 btn.style.display = "none";
             }
-        };
+        }, { passive: true });
     }
 
     /**
@@ -61,32 +61,19 @@
 </script>
 
 <style>
-    #TableOfContents>ul,
-    ol {
-
-        ul,
-        ol {
-            display: none;
-        }
-
-        .open {
-            display: block;
-        }
+    /*
+      目录折叠：只作用于文章目录（#TableOfContents）内部。
+      旧写法把 `ol` 单独放在选择器列表里，等于对全站所有 <ol> 生效，
+      会把正文有序列表里的嵌套 ul/ol 一并隐藏。
+    */
+    #TableOfContents>ul ul,
+    #TableOfContents>ul ol {
+        display: none;
     }
-</style>
 
-<style>
-    #TableOfContents>ul,
-    ol {
-
-        ul,
-        ol {
-            display: none;
-        }
-
-        .open {
-            display: block;
-        }
+    #TableOfContents>ul ul.open,
+    #TableOfContents>ul ol.open {
+        display: block;
     }
 </style>
 
@@ -125,47 +112,3 @@
     }
     initTocHide()
 </script>
-
-<style>
-    .highlight {
-        /* 你可以根据需要调整这个高度 */
-        max-height: 400px;
-        overflow: hidden;
-    }
-
-    .code-show {
-        max-height: none !important;
-    }
-
-    .code-more-box {
-        width: 100%;
-        padding-top: 78px;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
-    }
-
-    .code-more-btn {
-        display: block;
-        margin: auto;
-        width: 44px;
-        height: 22px;
-        background: #f0f0f5;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        padding-top: 6px;
-        cursor: pointer;
-    }
-
-    .code-more-img {
-        cursor: pointer !important;
-        display: block;
-        margin: auto;
-        width: 22px;
-        height: 16px;
-    }
-</style>
-

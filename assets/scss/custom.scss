@@ -177,20 +177,9 @@
 //     }
 // }
 
-// MacOS 风格代码块
-.article-content {
-  .highlight:before {
-    content: '';
-    display: block;
-    background: url(/code-header.svg);
-    height: 32px;
-    width: 100%;
-    background-size: 57px;
-    background-repeat: no-repeat;
-    margin-bottom: 5px;
-    background-position: -1px 2px;
-  }
-}
+// MacOS 风格代码块头部：原本是 background: url(/code-header.svg)，
+// 但仓库里没有这个文件，而且 `/` 是站根绝对路径，项目页部署在 /Andreas-Blog/ 下必然 404，
+// 净效果是每个代码块前多出一条 32px 空白。先移除；要恢复请把图放进 assets/ 并用 resources.Get 取地址。
 
 // // light模式下的代码块样式调整
 // [data-scheme="light"] .article-content .highlight {
