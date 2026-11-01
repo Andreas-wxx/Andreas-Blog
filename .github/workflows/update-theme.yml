@@ -1,12 +1,14 @@
 name: Update theme
 
-# Controls when the workflow will run
+# 只在手动触发时运行（Actions 页面 -> Update theme -> Run workflow）。
+# 曾经是每天 00:00 UTC 自动执行，但本仓库把主题的绝大多数模板/样式都复制进项目改造过，
+# 自动升级几乎不改变实际渲染，却可能悄悄改动主题的 config/i18n 默认值，
+# 而且当时升级后不做任何校验就直接提交到 main。因此改为纯手动 + 提交前构建校验。
 on:
-  schedule:
-    # Update theme automatically everyday at 00:00 UTC
-    - cron: "0 0 * * *"
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+env:
+  HUGO_VERSION: 0.168.0
 
 jobs:
   update-theme:
@@ -16,14 +18,14 @@ jobs:
       # Give the default GITHUB_TOKEN write permission to commit and push the
       # added or changed files to the repository.
       contents: write
-    
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
       - name: Update theme
@@ -31,6 +33,15 @@ jobs:
 
       - name: Tidy go.mod, go.sum
         run: hugo mod tidy
+
+      # 构建不过就停在这里，后面的提交步骤不会执行，仓库保持原样。
+      - name: Verify the site still builds
+        run: hugo --gc --minify
+
+      - name: Show what would change
+        run: |
+          git --no-pager diff --stat
+          git --no-pager diff -- go.mod || true
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
